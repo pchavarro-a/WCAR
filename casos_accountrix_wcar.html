@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ESTADOS PROCESALES - ACCOUNTRIX WCAR</title>
+  <!-- Fuente Google: Rethink Sans para párrafos y texto general -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rethink+Sans:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
+  
+  <style>
+    body {
+      font-family: 'Rethink Sans', sans-serif;
+      padding: 30px;
+      background: #F7F8FC;
+      color: #1A2238;
+      margin: 0;
+    }
+
+    /* Títulos en Century Gothic y Mayúsculas */
+    h1, h2, h3, h4, th {
+      font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
+      text-transform: uppercase;
+      color: #1A2238;
+      margin-top: 0;
+    }
+
+    /* Párrafos y celdas */
+    p, td, li, span, input {
+      font-family: 'Rethink Sans', sans-serif;
+      font-size: 15px;
+      line-height: 1.5;
+    }
+
+    /* Tarjetas principales estilo sencillo */
+    .card {
+      background: white;
+      padding: 24px;
+      border-radius: 18px;
+      border-top: 4px solid #ff6600;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    }
+
+    /* Botones personalizados */
+    button, .btn {
+      background: #ff6600;
+      color: #FFFFFF;
+      font-weight: bold;
+      border: 0;
+      padding: 10px 16px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-family: 'Rethink Sans', sans-serif;
+      transition: background 0.2s, opacity 0.2s;
+    }
+
+    button:hover {
+      opacity: 0.9;
+    }
+
+    button.active {
+      background: #1A2238;
+      color: #FFFFFF;
+    }
+
+    /* Grid para tarjetas resumen */
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+      margin-top: 15px;
+    }
+
+    .summary-box {
+      background: #F7F8FC;
+      padding: 16px;
+      border-radius: 12px;
+      text-align: center;
+      border: 1px solid #E2E8F0;
+    }
+
+    .summary-box h4 {
+      font-size: 12px;
+      color: #64748b;
+      margin-bottom: 5px;
+    }
+
+    .summary-box .number {
+      font-size: 24px;
+      font-weight: bold;
+      color: #ff6600;
+    }
+
+    /* Buscador */
+    .search-input {
+      width: 100%;
+      max-width: 400px;
+      padding: 10px 14px;
+      border: 1px solid #CBD5E1;
+      border-radius: 10px;
+      margin-bottom: 15px;
+      box-sizing: border-box;
+    }
+
+    .search-input:focus {
+      outline: none;
+      border-color: #ff6600;
+    }
+
+    /* Contenedor de botones de filtro */
+    .filter-group {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 15px;
+    }
+
+    /* Tablas sencillas */
+    .table-responsive {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+
+    th {
+      background: #F1F5F9;
+      text-align: left;
+      padding: 12px;
+      font-size: 13px;
+      border-bottom: 2px solid #E2E8F0;
+    }
+
+    td {
+      padding: 12px;
+      border-bottom: 1px solid #E2E8F0;
+    }
+
+    tr:hover {
+      background-color: #FAFAFA;
+    }
+
+    /* Etiquetas de Estado */
+    .tag {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    .tag-tramite { background: #E0F2FE; color: #0369A1; }
+    .tag-mora { background: #FEE2E2; color: #B91C1C; }
+    .tag-traslado { background: #FEF3C7; color: #B45309; }
+    .tag-pago { background: #E0E7FF; color: #4338CA; }
+    .tag-terminado { background: #DCFCE7; color: #15803D; }
+  </style>
+</head>
+<body>
+
+  <!-- ENCABEZADO DE LA PRESENTACIÓN -->
+  <div class="card">
+    <h2>REPORTE DE CASOS Y ESTADOS PROCESALES</h2>
+    <p>Seguimiento actualizado de procesos jurídicos, traslados internos y radicados de WCAR en Accountrix.</p>
+  </div>
+
+  <!-- DIVISION 1: RESUMEN GENERAL (KPIs) -->
+  <div class="card">
+    <h2>RESUMEN GENERAL DE CASOS</h2>
+    <p>Distribución global según el estado actual registrado en el sistema:</p>
+
+    <div class="summary-grid">
+      <div class="summary-box">
+        <h4>TOTAL REGISTROS</h4>
+        <div class="number">112</div>
+      </div>
+      <div class="summary-box">
+        <h4>EN TRÁMITE</h4>
+        <div class="number">13</div>
+      </div>
+      <div class="summary-box">
+        <h4>REQUERIMIENTO EN MORA</h4>
+        <div class="number">15</div>
+      </div>
+      <div class="summary-box">
+        <h4>TRASLADOS Y ACUERDOS</h4>
+        <div class="number">4</div>
+      </div>
+      <div class="summary-box">
+        <h4>TERMINADOS / SARLAFT</h4>
+        <div class="number">80</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DIVISION 2: FILTROS Y BÚSQUEDA RÁPIDA -->
+  <div class="card">
+    <h2>BÚSQUEDA Y FILTRADO DE CASOS</h2>
+    <p>Filtra por estado o escribe la placa/nombre para encontrar el expediente fácilmente:</p>
+    
+    <input type="text" id="searchInput" class="search-input" onkeyup="buscarProceso()" placeholder="Escribe placa, nombre o trámite...">
+
+    <div class="filter-group">
+      <button class="active" onclick="filtrarEstado('TODOS', this)">TODOS (112)</button>
+      <button onclick="filtrarEstado('EN TRAMITE', this)">EN TRÁMITE</button>
+      <button onclick="filtrarEstado('REQUERIMIENTO EN MORA.', this)">EN MORA</button>
+      <button onclick="filtrarEstado('TRASLADO', this)">TRASLADOS / ACUERDOS</button>
+      <button onclick="filtrarEstado('TERMINADO', this)">TERMINADOS</button>
+      <button onclick="filtrarEstado('SARLAFT', this)">SARLAFT</button>
+    </div>
+  </div>
+
+  <!-- DIVISION 3: DETALLE DE PROCESOS EN TABLA -->
+  <div class="card">
+    <h2>LISTADO GENERAL DE CASOS</h2>
+    <p>A continuación se detallan todos los registros almacenados en Accountrix:</p>
+
+    <div class="table-responsive">
+      <table id="tablaProcesos">
+        <thead>
+          <tr>
+            <th>ITEM</th>
+            <th>PROCESO / PLACA / CLIENTE</th>
+            <th>ESTADO PROCESAL</th>
+            <th>OBSERVACIONES</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- PROCESOS PRINCIPALES -->
+          <tr><td>0.01</td><td>LTX090 - HUGO GUILLERMO MARTÍNEZ LOZADA</td><td><span class="tag tag-traslado">TRALADO AREA VENTAS</span></td><td>—</td></tr>
+          <tr><td>0.02</td><td>GJU624 - ALEXA VIVIANA MEDINA RODRÍGUEZ</td><td><span class="tag tag-traslado">TRASLADO AREA VENTAS</span></td><td>—</td></tr>
+          <tr><td>0.03</td><td>IES694 - CRISTHIAN IVAN RODRIGUEZ JIMENEZ / SOTILEZA AUTOMÓVILES S.A.S.</td><td><span class="tag tag-tramite">EN TRAMITE</span></td><td>—</td></tr>
+          <tr><td>0.04</td><td>JMN214 - HERNANDO OVALLE GOMEZ</td><td><span class="tag tag-mora">REQUERIMIENTO EN MORA.</span></td><td>26 DIC. 2025</td></tr>
+          <tr><td>0.05</td><td>KUT429 - ÁLVARO ESLAVA ALVARADO</td><td><span class="tag tag-terminado">TERMINADO</span></td><td>—</td></tr>
+          <tr><td>0.06</td><td>NIR605 - CARLOS ALBERTO AGUAYO VENTURA. D. PETICION</td><td><span class="tag tag-terminado">TERMINADO</span></td><td>—</td></tr>
+          <tr><td>0.07</td><td>NQP185 - RICARDO ALONSO RINCON VEGA</td><td><span class="tag tag-mora">REQUERIMIENTO EN MORA.</span></td><td>—</td></tr>
+          <tr><td>0.08</td><td>PBU481 - CARLOS ANDRES CASTAÑEDA GUERRERO</td><td><span class="tag tag-mora">REQUERIMIENTO EN MORA.</span></td><td>—</td></tr>
+          <tr><td>0.09</td><td>GYV616 - NUBIA YANETH MUÑOZ MONZON</td><td><span class="tag tag-terminado">TERMINADO. ORDEN WALTHER</span></td><td>—</td></tr>
+          <tr><td>0.10</td><td>NJO379 - EDWIN HELVES GUTIERREZ TORRES</td><td><span class="tag tag-mora">REQUERIMIENTO EN MORA.</span></td><td>—</td></tr>
+          <tr><td>0.11</td><td>MJZ077 - JAIRO ANTONIO FUENTES PAVA</td><td><span class="tag tag-mora">REQUERIMIENTO EN MORA.</span></td><td>—</td></tr>
+          <tr><td>0.12</td><td>KWO998 - WILSON FERNANDO MARTINEZ CUESTA</td><td><span class="tag tag-mora">REQUERIMIENTO EN MORA.</span></td><td>—</td></tr>
+          <tr><td>0.13</td><td>HTK454 - ROBINSON FERNANDO CRISTIANO GUAJE</td><td><span class="tag tag-mora">REQUERIMIENTO EN MORA.</span></td><td>—</td></tr>
+          <tr><td>0.14</td><td>EMN873 - D. PETICIÓN POLICIA NACIONAL</td><td><span class="tag tag-terminado">TERMINADO</span></td><td>—</td></tr>
+          <tr><td>0.15</td><td>DLN732. D. PETICIÓN POLICIA NACIONAL</td><td><span class="tag tag-terminado">TERMINADO</span></td><td>—</td></tr>
+          <tr><td>0.16</td><td>JVU960. D. PETICIÓN POLICIA NACIONAL</td><td><span class="tag tag-terminado">TERMINADO</span></td><td>—</td></tr>
+          <tr><td>0.17</td><td>IGR757 - CAMILO ESCOBAR ZULUAGA</td><td><span class="tag tag-mora">REQUERIMIENTO EN MORA.</span></td><td>—</td></tr>
+          <tr><td>0.18</td><td>GRR140 - JUAN EDUARDO GIL GONZALEZ</td><td><span class="tag tag-mora">REQUERIMIENTO EN MORA.</span></td><td>—</td></tr>
+          <tr><td>0.19</td><td>LZS494 - JOSE ALEXANDER VEGA VERA</td><td><span class="tag tag-mora">REQUERIMIENTO EN MORA.</span></td><td>—</td></tr>
+          <tr><td>0.20</td><td>KVL640. D. PETICIÓN. POLICIA NACIONAL</td><td><span class="tag tag-terminado">TERMINADO</span></td><td>—</td></tr>
+          <tr><td>0.21</td><td>KQN688 - HENRY SALCEDO RODRÍGUEZ</td><td><span class="tag tag-terminado">TERMINADO</span></td><td>—</td></tr>
+          <tr><td>0.22</td><td>FPL428 - HELIA PATRICIA GARZÓN PÁEZ</td><td><span class="tag tag-mora">REQUERIMIENTO EN MORA.</span></td><td>—</td></tr>
+          <tr><td>0.23</td><td>KUT601 - MARIA CRISTINA ROMERO DUARTE</td><td><span class="tag tag-tramite">EN TRAMITE</span></td><td>—</td></tr>
+          <tr><td>0.24</td><td>KXV993 - JOHNNY ALBERTO JIMENEZ</td><td><span class="tag tag-mora">REQUERIMIENTO EN MORA.</span></td><td>—</td></tr>
+          <tr><td>0.25</td><td>LQW740 - DIEGO POVEDA SALGADO</td><td><span class="tag tag-terminado">TERMINADO</span></td><td>—</td></tr>
+          <tr><td>0.26</td><td>NIR605 - DERECHO DE PETICIÓN POLICIA NACIONAL</td><td><span class="tag tag-terminado">TERMINADO</span></td><td>—</td></tr>
+          <tr><td>0.27</td><td>LDO94F. DERECHO DE PETICIÓN POLICIA NACIONAL</td><td><span class="tag tag-terminado">TERMINADO</span></td><td>—</td></tr>
+          <tr><td>0.28</td><td>NLU635 - GRUAS-JHON LEANDRO</td><td><span class="tag tag-terminado">TERMINADO</span></td><td>—</td></tr>
+          <tr><td>0.29</td><td>KOV049 - OLGA ADRIANA LEON ALDANA</td><td><span class="tag tag-terminado">TERMINADO</span></td><td>—</td></tr>
+          <tr><td>0.30</td><td>MKO650 - MARYURY TATIANA GARCIA RIVERA</td><td><span class="tag tag-terminado">TERMINADO</span></td><td>—</td></tr>
+          <tr><td>0.31</td><td>IXX397 MARIA JULIANA GUERRERO LEON</td><td><span class="tag tag-terminado">TERMINADO</span></td><td>—</td></tr>
+          <tr><td>0.32</td><td>REV945. KAREN ZAMBRANO</td><td><span class="tag tag-pago">ESPERA DE PAGO ACUERDO</span></td><td>—</td></tr>
+          <tr><td>0.33</td><td>ELY996. DAVID SANDOVAL</td><td><span class="tag tag-terminado">TERMINADO</span></td><td>—</td></tr>
+          <tr><td>0.34</td><td>GPU613. MARIA VICTORIA ALVAREZ</td><td><span class="tag tag-mora">REQUERIMIENTO EN MORA.</span></td><td>—</td></tr>
+          <tr><td>0.35</td><td>GJP051. LUZ ANGÉLICA ORTIZ / LUIS DUVÁN GÓMEZ</td><td><span class="tag tag-traslado">TRASLADO AREA COMPRAS</span></td><td>—</td></tr>
+          <tr><td>0.36</td><td>LZZ173. POLICIA NACIONAL</td><td><span class="tag tag-terminado">TERMINADO</span></td><td>—</td></tr>
+          <tr><td>0.37</td><td>GKT206. RICARDO ANDRES BASANTA RINCON</td><td><span class="tag tag-terminado">TERMINADO</span></td><td>—</td></tr>
+          <tr><td>0.38</td><td>BOT097. D PETICIÓN</td><td><span class="tag tag-terminado">TERMINADO</span></td><td>—</td></tr>
+          <tr><td>0.39</td><td>GPZ344. DEIBYJOSE PERILLA BEJARANO</td><td><span class="tag tag-mora">REQUERIMIENTO EN MORA.</span></td><td>—</td></tr>
+          <tr><td>0.40</td><td>IMX625. RAFAEL ARTURO BECERRA SANTANA</td><td><span class="tag tag-mora">REQUERIMIENTO EN MORA.</span></td><td>—</td></tr>
+          <tr><td>0.41</td><td>CZR198. MARIA ALEJANDRA FERRIN AYALA</td><td><span class="tag tag-terminado">TERMINADO</span></td><td>—</td></tr>
+          <tr><td>0.42</td><td>RMT577. ALBERTO GONZALEZ</td><td><span class="tag tag-terminado">TERMINADO</span></td><td>—</td></tr>
+          <tr><td>0.43</td><td>DQW217. D PETICIÓN. POLICIA</td><td><span class="tag tag-terminado">TERMINADO</span></td><td>—</td></tr>
+          <tr><td>0.44</td><td>UTR144. TUTELA</td><td><span class="tag tag-terminado">TERMINADO</span></td><td>—</td></tr>
+          <tr><td>0.45</td><td>HVL202 OMAR FERNANDO QUINTERO PINILLA</td><td><span class="tag tag-terminado">TERMINADO</span></td><td>—</td></tr>
+          <tr><td>0.46</td><td>D PETICIÓN SERGIO AUGUSTO CÁCERES PARDO</td><td><span class="tag tag-terminado">TERMINADO</span></td><td>—</td></tr>
+          <tr><td>0.47</td><td>JEW013. D PETICIÓN</td><td><span class="tag tag-terminado">TERMINADO</span></td><td>—</td></tr>
+          <tr><td>0.48</td><td>LCM06F D PETICION</td><td><span class="tag tag-terminado">TERMINADO</span></td><td>—</td></tr>
+          <tr><td>0.49</td><td>PHO852. SINIESTRO PAULA XIMENA BAICUE</td><td><span class="tag tag-tramite">EN TRAMITE</span></td><td>—</td></tr>
+          <tr><td>0.50</td><td>UBZ010. KEVIN Y KATHERINE RUBIO</td><td><span class="tag tag-terminado">TERMINADO</span></td><td>—</td></tr>
+          <tr><td>0.51</td><td>JXN505. TUTELA. B SANTADER</td><td><span class="tag tag-terminado">TERMINADO</span></td><td>—</td></tr>
+          <tr><td>0.52</td><td>HQL393. S. HACIENDA</td><td><span class="tag tag-terminado">TERMINADO</span></td><td>—</td></tr>
+          <tr><td>0.53</td><td>IPY800. TUTELA</td><td><span class="tag tag-terminado">TERMINADO</span></td><td>—</td></tr>
+          <tr><td>0.54</td><td>RQU05G. D. PETICION</td><td><span class="tag tag-tramite">EN TRAMITE</span></td><td>—</td></tr>
+          <tr><td>0.55</td><td>GHH19H. YOJHAN CAMILO FORERO ROA</td><td><span class="tag tag-tramite">EN TRAMITE</span></td><td>—</td></tr>
+          <tr><td>0.56</td><td>FOK139. CAMILO ANDRES RODRIGUEZ BARRERO</td><td><span class="tag tag-tramite">EN TRAMITE</span></td><td>—</td></tr>
+          <tr><td>0.57</td><td>DQU265. JUAN CARLOS SEGURA ORTIZ</td><td><span class="tag tag-tramite">EN TRAMITE</span></td><td>—</td></tr>
+          <tr><td>0.58</td><td>CONTRATO MARCO. VATCO</td><td><span class="tag tag-terminado">TERMINADO</span></td><td>—</td></tr>
+          <tr><td>0.59</td><td>MXR148. ZULMA VIVIANA PEÑA SALAZAR</td><td><span class="tag tag-terminado">TERMINADO</span></td><td>—</td></tr>
+          <tr><td>0.60</td><td>EJM964. KEVIN DE JESUS CALVO ANILLO</td><td><span class="tag tag-terminado">TERMINADO</span></td><td>—</td></tr>
+          <tr><td>0.61</td><td>UGK770. VICTOR FABIO GRAJALES HOLGUIN</td><td><span class="tag tag-tramite">EN TRAMITE</span></td><td>—</td></tr>
+          <tr><td>0.62</td><td>UDK861. VICIO OCULTO. DIEGO FERNANDO SOLER TEJEDOR</td><td><span class="tag tag-tramite">EN TRAMITE</span></td><td>—</td></tr>
+          <tr><td>0.63</td><td>JBT988. MOTOR REGRABADO</td><td><span class="tag tag-tramite">EN TRAMITE</span></td><td>—</td></tr>
+          <tr><td>0.64</td><td>ZZN597. D. PETICIÓN</td><td><span class="tag tag-terminado">TERMINADO</span></td><td>—</td></tr>
+          <tr><td>0.65</td><td>NQR505. D. PETICIÓN</td><td><span class="tag tag-terminado">TERMINADO</span></td><td>—</td></tr>
+          <tr><td>0.66</td><td>ELV551. PAULA ANDREA MUÑOZ ANDRADE</td><td><span class="tag tag-terminado">TERMINADO</span></td><td>—</td></tr>
+          <tr><td>0.67</td><td>LSW579. MIGUEL ANGEL MOYA RAMIREZ</td><td><span class="tag tag-terminado">TERMINADO</span></td><td>—</td></tr>
+          <tr><td>0.68</td><td>PYX562. RICARDO ANDRES PLAZAS</td><td><span class="tag tag-terminado">TERMINADO</span></td><td>—</td></tr>
+          <tr><td>0.69</td><td>IJV544. DANIEL EDUARDO GONZALEZ</td><td><span class="tag tag-tramite">EN TRAMITE</span></td><td>—</td></tr>
+          <tr><td>0.70</td><td>NNY069. D. PETICIÓN. ACOSTA BELTRAN LEONARDO</td><td><span class="tag tag-tramite">EN TRAMITE</span></td><td>—</td></tr>
+          <tr><td>0.71</td><td>LPV010. JULIAN CHACON</td><td><span class="tag tag-terminado">TERMINADO</span></td><td>—</td></tr>
+          <tr><td>0.72</td><td>GPQ082. D.PETICION</td><td><span class="tag tag-tramite">EN TRAMITE</span></td><td>—</td></tr>
+          <tr><td>0.73</td><td>HWU562. ELSA VELSQUEZ DE ORTIZ</td><td><span class="tag tag-tramite">EN TRAMITE</span></td><td>—</td></tr>
+          <tr><td>S-00</td><td>USO INDEBIDO FOTOGRAFIAS</td><td><span class="tag tag-terminado">TERMINADO</span></td><td>—</td></tr>
+
+          <!-- REGISTROS SARLAFT -->
+          <tr><td>S-01</td><td>CYU865: 51.883.301</td><td><span class="tag tag-terminado">SARLAFT. TERMINADO</span></td><td>REVISIÓN OK</td></tr>
+          <tr><td>S-02</td><td>IJT807: 65.710.856</td><td><span class="tag tag-terminado">SARLAFT. TERMINADO</span></td><td>REVISIÓN OK</td></tr>
+          <tr><td>S-03</td><td>BWH576: 79.442.785</td><td><span class="tag tag-terminado">SARLAFT. TERMINADO</span></td><td>REVISIÓN OK</td></tr>
+          <tr><td>S-04</td><td>IEL686: 15.205.972</td><td><span class="tag tag-terminado">SARLAFT. TERMINADO</span></td><td>REVISIÓN OK</td></tr>
+          <tr><td>S-05</td><td>KOP565: 15.205.972</td><td><span class="tag tag-terminado">SARLAFT. TERMINADO</span></td><td>REVISIÓN OK</td></tr>
+          <tr><td>S-06</td><td>IRN698: 1.057.592.524</td><td><span class="tag tag-terminado">SARLAFT. TERMINADO</span></td><td>REVISIÓN OK</td></tr>
+          <tr><td>S-07</td><td>DNL375: 19.380.003</td><td><span class="tag tag-terminado">SARLAFT. TERMINADO</span></td><td>REVISIÓN OK</td></tr>
+          <tr><td>S-08</td><td>NJN515: 79.480.282</td><td><span class="tag tag-terminado">SARLAFT. TERMINADO</span></td><td>REVISIÓN OK</td></tr>
+          <tr><td>S-09</td><td>IRM209: 1.013.625.192</td><td><span class="tag tag-terminado">SARLAFT. TERMINADO</span></td><td>REVISIÓN OK</td></tr>
+          <tr><td>S-10</td><td>XGJ20G: 1.018.411.391</td><td><span class="tag tag-terminado">SARLAFT. TERMINADO</span></td><td>REVISIÓN OK</td></tr>
+          <tr><td>S-11</td><td>CMP951: 79.407.410</td><td><span class="tag tag-terminado">SARLAFT. TERMINADO</span></td><td>REVISIÓN OK</td></tr>
+          <tr><td>S-12</td><td>QHY892: 22.631.061</td><td><span class="tag tag-terminado">SARLAFT. TERMINADO</span></td><td>REVISIÓN OK</td></tr>
+          <tr><td>S-13</td><td>LRK411: 79.888.913</td><td><span class="tag tag-terminado">SARLAFT. TERMINADO</span></td><td>REVISIÓN OK</td></tr>
+          <tr><td>S-14</td><td>MCM444: 200.003.254-5</td><td><span class="tag tag-terminado">SARLAFT. TERMINADO</span></td><td>REVISIÓN OK</td></tr>
+          <tr><td>S-15</td><td>NNY069: 79.524.932</td><td><span class="tag tag-terminado">SARLAFT. TERMINADO</span></td><td>REVISIÓN OK</td></tr>
+          <tr><td>S-16</td><td>DGW525: 79.001.440</td><td><span class="tag tag-terminado">SARLAFT. TERMINADO</span></td><td>REVISIÓN OK</td></tr>
+          <tr><td>S-17</td><td>EDX874: 79.524.932</td><td><span class="tag tag-terminado">SARLAFT. TERMINADO</span></td><td>REVISIÓN OK</td></tr>
+          <tr><td>S-18</td><td>BYW47G: 1.070.975.865</td><td><span class="tag tag-terminado">SARLAFT. TERMINADO</span></td><td>REVISIÓN OK</td></tr>
+          <tr><td>S-19</td><td>MCR614: 52.544.352</td><td><span class="tag tag-terminado">SARLAFT. TERMINADO</span></td><td>REVISIÓN OK</td></tr>
+          <tr><td>S-20</td><td>LCZ894: 80.434.127</td><td><span class="tag tag-terminado">SARLAFT. TERMINADO</span></td><td>REVISIÓN OK</td></tr>
+          <tr><td>S-21</td><td>DGW559: 52.850.437</td><td><span class="tag tag-terminado">SARLAFT. TERMINADO</span></td><td>REVISIÓN OK</td></tr>
+          <tr><td>S-22</td><td>KAK502: 1.136.886.348</td><td><span class="tag tag-terminado">SARLAFT. TERMINADO</span></td><td>REVISIÓN OK</td></tr>
+          <tr><td>S-23</td><td>EJM964: 1.129.571.442</td><td><span class="tag tag-terminado">SARLAFT. TERMINADO</span></td><td>REVISIÓN OK</td></tr>
+          <tr><td>S-24</td><td>GCV884: 1.032.464.067</td><td><span class="tag tag-terminado">SARLAFT. TERMINADO</span></td><td>REVISIÓN OK</td></tr>
+          <tr><td>S-25</td><td>IOU393: 1.022.421.546</td><td><span class="tag tag-terminado">SARLAFT. TERMINADO</span></td><td>REVISIÓN OK</td></tr>
+          <tr><td>S-26</td><td>QQX159: 1.013.595.926</td><td><span class="tag tag-terminado">SARLAFT. TERMINADO</span></td><td>REVISIÓN OK</td></tr>
+          <tr><td>S-27</td><td>MXR148: 36.292.959</td><td><span class="tag tag-terminado">SARLAFT. TERMINADO</span></td><td>REVISIÓN OK</td></tr>
+          <tr><td>S-28</td><td>VCS02G: 79.401.561</td><td><span class="tag tag-terminado">SARLAFT. TERMINADO</span></td><td>REVISIÓN OK</td></tr>
+          <tr><td>S-29</td><td>IIY413: 80.243.772</td><td><span class="tag tag-terminado">SARLAFT. TERMINADO</span></td><td>REVISIÓN OK</td></tr>
+          <tr><td>S-30</td><td>JXL481: 17.580.629</td><td><span class="tag tag-terminado">SARLAFT. TERMINADO</span></td><td>REVISIÓN OK</td></tr>
+          <tr><td>S-31</td><td>NBK879: 72.281.123</td><td><span class="tag tag-terminado">SARLAFT. TERMINADO</span></td><td>REVISIÓN OK</td></tr>
+          <tr><td>S-32</td><td>JDO205: 73.152.097</td><td><span class="tag tag-terminado">SARLAFT. TERMINADO</span></td><td>REVISIÓN OK</td></tr>
+          <tr><td>S-33</td><td>XGN91G: 1.032.455.236</td><td><span class="tag tag-terminado">SARLAFT. TERMINADO</span></td><td>REVISIÓN OK</td></tr>
+          <tr><td>S-34</td><td>JNU146: 1.136.886.348</td><td><span class="tag tag-terminado">SARLAFT. TERMINADO</span></td><td>REVISIÓN OK</td></tr>
+          <tr><td>S-35</td><td>DHW597: 1.033.769.291</td><td><span class="tag tag-terminado">SARLAFT. TERMINADO</span></td><td>REVISIÓN OK</td></tr>
+          <tr><td>S-36</td><td>XGE35G: 1.032.500.243</td><td><span class="tag tag-terminado">SARLAFT. TERMINADO</span></td><td>REVISIÓN OK</td></tr>
+          <tr><td>S-37</td><td>IUW295: 5021286906</td><td><span class="tag tag-terminado">SARLAFT. TERMINADO</span></td><td>REVISIÓN OK</td></tr>
+          <tr><td>S-38</td><td>RMT950: 35.327.590</td><td><span class="tag tag-terminado">SARLAFT. TERMINADO</span></td><td>REVISIÓN OK</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- LÓGICA DE BÚSQUEDA Y FILTRADO (FÁCIL Y LIGERA) -->
+  <script>
+    let filtroActual = 'TODOS';
+
+    function filtrarEstado(estado, elemento) {
+      filtroActual = estado;
+      
+      // Actualizar botón activo
+      const botones = document.querySelectorAll('.filter-group button');
+      botones.forEach(btn => btn.classList.remove('active'));
+      elemento.classList.add('active');
+
+      buscarProceso();
+    }
+
+    function buscarProceso() {
+      const textoBusqueda = document.getElementById('searchInput').value.toUpperCase();
+      const tabla = document.getElementById('tablaProcesos');
+      const filas = tabla.getElementsByTagName('tr');
+
+      for (let i = 1; i < filas.length; i++) {
+        const celdaProceso = filas[i].getElementsByTagName('td')[1];
+        const celdaEstado = filas[i].getElementsByTagName('td')[2];
+
+        if (celdaProceso && celdaEstado) {
+          const textoProceso = celdaProceso.textContent || celdaProceso.innerText;
+          const textoEstado = celdaEstado.textContent || celdaEstado.innerText;
+
+          const coincideTexto = textoProceso.toUpperCase().includes(textoBusqueda) || 
+                                 textoEstado.toUpperCase().includes(textoBusqueda);
+
+          let coincideFiltro = false;
+
+          if (filtroActual === 'TODOS') {
+            coincideFiltro = true;
+          } else if (filtroActual === 'TRASLADO') {
+            coincideFiltro = textoEstado.includes('TRASLADO') || textoEstado.includes('ACUERDO') || textoEstado.includes('TRALADO');
+          } else if (filtroActual === 'SARLAFT') {
+            coincideFiltro = textoEstado.includes('SARLAFT');
+          } else if (filtroActual === 'TERMINADO') {
+            coincideFiltro = textoEstado.includes('TERMINADO') && !textoEstado.includes('SARLAFT');
+          } else {
+            coincideFiltro = textoEstado.includes(filtroActual);
+          }
+
+          if (coincideTexto && coincideFiltro) {
+            filas[i].style.display = "";
+          } else {
+            filas[i].style.display = "none";
+          }
+        }
+      }
+    }
+  </script>
+
+</body>
+</html>
